@@ -3,7 +3,7 @@ displayName: US Weather MCP Server
 description: Real-time US weather checking tool using wttr.in, built with FastMCP.
 version: 1.0.0
 author: Yunjia
-homepage: https://github.com/yunjiaz7/us-weather-mcp.git
+homepage: https://github.com/yunjiaz7/us-weather-mcp
 license: MIT
 categories:
   - weather
@@ -16,7 +16,9 @@ tags:
 runtime: container
 build:
   dockerfile: Dockerfile
-  context: .
+  # 👇【关键修改】这里必须叫 dockerBuildPath
+  dockerBuildPath: .
 startCommand:
   type: stdio
-  configSchema: {} # 我们的工具不需要 API Key，所以留空
+  # 👇【建议】删掉了中文注释，保持干净
+  configSchema: {}
