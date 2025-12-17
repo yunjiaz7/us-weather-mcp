@@ -64,16 +64,4 @@ async def get_us_weather(city_query: str) -> str:
             return json.dumps({"error": str(e), "status": "error"})
 
 if __name__ == "__main__":
-    import os
-    import uvicorn
-    
-    # 检查是否使用 HTTP 模式（通过环境变量 PORT）
-    port = int(os.environ.get("PORT", 0))
-    
-    if port > 0:
-        # HTTP 模式：使用 uvicorn 运行 FastMCP 作为 ASGI 应用
-        host = os.environ.get("HOST", "0.0.0.0")
-        uvicorn.run(mcp, host=host, port=port)
-    else:
-        # stdio 模式：本地开发使用
-        mcp.run()
+    mcp.run(transport='stdio')
