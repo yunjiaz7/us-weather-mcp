@@ -18,7 +18,7 @@ build:
   dockerfile: Dockerfile
   dockerBuildPath: .
 startCommand:
-  type: stdio
+  type: http
   configSchema:
     type: object
     properties: {}
@@ -26,5 +26,8 @@ startCommand:
     (config) => ({
       command: "python",
       args: ["weather_server.py"],
-      env: {}
+      env: {
+        PORT: "8000",
+        HOST: "0.0.0.0"
+      }
     })
