@@ -19,3 +19,12 @@ build:
   dockerBuildPath: .
 startCommand:
   type: stdio
+  configSchema:
+    type: object
+    properties: {}
+  commandFunction: |-
+    (config) => ({
+      command: "python",
+      args: ["weather_server.py"],
+      env: {}
+    })
